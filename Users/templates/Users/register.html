@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../static/Users/loginn.css" rel="stylesheet" type="text/css"/>
+    <title>Ebookstore</title>
+  </head>
+  <body>
+   <div class="col-4-lg">
+{% load crispy_forms_tags %}
+       <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: white">
+      <div class="container-fluid panel topnav">
+        <a class="navbar-brand"><img src="../../static/images/logo.jpg" alt="logopic"></a>
+        <button class="navbar-toggler" type="button" data-togglr="collapse"
+        data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+              <div id="hoverdiv"></div>
+        </div>
+      </div>
+    </nav>
+
+ <div class="hello">
+            <h6 class="hellos">SIGN UP</h6>
+     <br>
+     <p class="hillo">“Once you have read a book you care about, some part of it is always with you.” </p><p class="hillos">– Louis L’Amour</p>
+       </div>
+
+
+
+    <div class="container col-4-lg" style="width: 500px">
+
+
+
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+            </small>
+        </div>
+    </div>
+   </div>
+  </body>
+</html>

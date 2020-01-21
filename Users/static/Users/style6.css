@@ -1,0 +1,114 @@
+html{
+	background: #000;
+}
+
+body
+{
+	background: center;
+}
+
+.back {
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.panel {
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.container{
+	margin-top: 3%;
+	margin-left:14%;
+}
+
+.foot {
+  overflow: hidden;
+  background-color: #232D74;
+}
+
+
+#hoverdiv{
+	display: none;
+	position: absolute;
+	font-size: 11px;
+	background-color: #fff;
+	color: #404040;
+	border: 1px solid #999;
+	padding: 2px;
+}
+
+.display-6
+{
+	color: #000000;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 3px 3px;
+  text-decoration: none;
+  font-size: 13px;
+  border-bottom: 4px solid transparent;
+}
+
+.topnav a:hover {
+  border-bottom: 2.2px solid #CBD5DC;
+}
+
+.topnav a.active {
+  border-bottom: 2.2px solid #CBD5DC;
+}
+
+.bro2
+{
+    font-family: Farah;
+    padding-top: 10px;
+    padding-left: 10px;
+	width: 1536px;
+	height:100px;
+	background-color: #fff;
+
+}
+.bro
+{
+    padding-left: 10px;
+	width: 1536px;
+	height:450px;
+	background-color: #fff;
+
+}
+
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  border-radius: 2px;
+  padding: 5px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 25px;
+  font-size: 18px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+
+.hidden{
+	display: none;
+}

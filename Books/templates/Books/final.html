@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="../../../static/Books/stylef.css">
+
+    <title>ebookstore</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: white">
+      <div class="container-fluid panel">
+{#          topnav#}
+        <a class="navbar-brand"><img src="../../../static/images/logo.jpg" alt="logopic"></a>
+        <button class="navbar-toggler" type="button" data-togglr="collapse"
+        data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+          
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+              <div id="hoverdiv"></div>
+<form class="navbar-form navbar-left" role="search" method="get" action="{% url 'search' %}">
+                <input class="panel input hover" hovertext="Enter a Book Name" name = "q" value="{{ request.GET.q }}" type="text" placeholder="Search.." style = "width:500px">
+
+                <button type="submit" hovertext="Search" class="btn btn-default hover"><img src="../../../static/images/search.png"></button>
+            </form>
+{#  <input class="panel input hover" hovertext="Enter a Book Name" type="text" placeholder=" Search.." style = "width:500px;"><font color="white">ii</font>#}
+{#  <a class="hover" href="#" hovertext="Search"><img src="../../../static/images/search.png"></a>#}
+
+<ul class="navbar-nav ml-auto">
+
+            <li class="nav-item">
+
+              <div id="hoverdiv"></div>
+              <a class="nav-link hover" href="{% url 'home' %}" hovertext="Home"><img src="../../../static/images/home.png">
+              </a>
+            
+            </li>
+            <li class="nav-item">
+
+              <div id="hoverdiv"></div>
+              <a class="nav-link hover" href="{% url 'favourites' %}" hovertext="My Favorites"><font color="white">Ai</font>
+                <img src="../../../static/images/fav.png"></a>
+            </li>
+            <li class="nav-item">
+
+              <div id="hoverdiv"></div>
+              <a class="nav-link hover" href="#popup1" hovertext="Upload a Book"><font color="white">Ai</font><img src="../../../static/images/upload.png">
+</a>
+            </li>
+            <li class="nav-item">
+
+              <div id="hoverdiv"></div>
+              <a onclick="myFunction()" class="nav-link hover" href="{% url 'logout' %}" hovertext="Log Out"><font color="white">A</font><img src="../../../static/images/logout.png">
+</a>
+
+
+<div id="snackbar">Successfully logged out</div>
+
+            </li>
+            <li class="nav-item">
+              <div id="hoverdiv"></div>
+              <a class="nav-link hover" href="#footer" hovertext="Contact"><font color="white">ii</font><img src="../../../static/images/call.png">
+</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+
+<div class="back">
+  <embed src="{{ book.bookPDF.url }}" width="800px" height="600px" class="pdf" />
+
+</div>
+
+
+
+<div>
+  <font class="hover" hovertext=" – Mortimer J. Adler" color=#66696A ><i class="text-center">
+&nbsp&nbsp&nbsp&nbsp“&nbsp&nbsp&nbsp&nbspIn the case of good books, the point is not to see how many of them you can get through, but rather how many can get through to you.&nbsp&nbspThink before you speak. Read before you think.&nbsp&nbsp&nbsp&nbsp”</i></font>
+</div>
+
+
+
+
+<footer class="foot">
+  <a name="footer"><font color="black">
+    <p class="text-center">
+      <br>
+    Call us at : +91-9869137150 / +91-8879556639<br>
+    Email us at : ebookstore26@gmail.com / customercare@ebkstore.co.in<br>
+    Address (9am to 9pm) : Dwarkadas J. Sanghvi College of Engineering Vile Parle (West) Mumbai-400094</p>
+    <p class="text-right">&copy Copyright. All rights reserved.&nbsp&nbsp&nbsp</p></font>
+  </a>
+</footer>
+
+
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h5>  Share your content with us.</h5>
+  
+<a class="close" href="#">&times;</a>
+    <div class="content">
+
+      <form>
+  
+  <input type="text" name="bookname" style="width:320px" placeholder="Book Title">
+    <br>
+  <input type="text" name="author" style="width:228px" placeholder="Author">
+  <br>
+<small>Book Genre  -&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp  &nbsp &nbsp Release Date -</small> 
+ <br>
+<select style="width: 105px">
+
+                    <option value="genre1">Romance</option>
+                    <option value="genre2">Thriller</option>
+                    <option value="genre3">Fiction</option>
+                    <option value="genre5">Horror</option>
+                    <option value="genre6">Mystery</option>
+                    <option value="genre7">Spiritual</option>
+                    <option value="genre8">Psychology</option>
+
+</select> 
+&nbsp &nbsp
+<input type="date" style="width: 190px">
+
+
+<br>
+<small>Insert Book Cover image: </small><input type="file" name="pic" style="width:320px">
+<br>
+<small>Select Book PDF: </small><input type="file" name="pic" style="width:320px">
+
+<br>
+<textarea  style="width:320px" class="textarea" placeholder="Brief Synopsis" ></textarea>
+<br>
+  <input type="submit" value="Upload Now" style="width: 320px" >
+</form>   
+
+    </div>
+  </div>
+</div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../../../static/Books/jquery.js"></script>
+    <script type="text/javascript" src="../../../static/Books/hovertext.js"></script>
+    <script type="text/javascript" src="../../../static/Books/snackbar.js"></script>
+  </body>
+</html>

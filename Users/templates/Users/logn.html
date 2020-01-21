@@ -1,0 +1,61 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Untitled Document</title>
+    <link href="static/Users/loginn.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Ebookstore</title>
+</head>
+
+<body>
+
+{% load crispy_forms_tags %}
+
+
+       <nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: white">
+      <div class="container-fluid panel topnav">
+        <a class="navbar-brand"><img src="../../static/images/logo.jpg" alt="logopic"></a>
+        <button class="navbar-toggler" type="button" data-togglr="collapse"
+        data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        </div>
+    </nav>
+
+
+ <div class="hello">
+            <h6 class="hellos">LOG IN</h6>
+     <br>
+     <p class="hillo">“Once you have read a book you care about, some part of it is always with you.” </p><p class="hillos">– Louis L’Amour</p>
+        </div>
+
+
+
+<div class="containr col-4-lg" style="width: 500px">
+{% load crispy_forms_tags %}
+
+
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="legendd border-bottom mb-4">Welcome!</legend>
+
+    {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Login</button>
+    </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+        </small>
+    </div>
+</div>
+</div>
+</body>
+</html>

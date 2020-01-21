@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
+
+    {% if isLiked %}
+        <link rel="stylesheet" type="text/css" href="../../../static/Books/read-more.css">
+        <link rel="stylesheet" type="text/css" href="../../../static/Books/styleee.css">
+    {% else %}
+        <link rel="stylesheet" type="text/css" href="../static/Books/styleee.css">
+    {% endif %}
+    <title>ebookstore</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: white">
+    <div class="container-fluid panel">
+        {% if isLiked %}
+            <a class="navbar-brand"><img src="../../../static/images/logo.jpg" alt="logopic"></a>
+        {% else %}
+            <a class="navbar-brand"><img src="../static/images/logo.jpg" alt="logopic"></a>
+        {% endif %}
+
+
+        <button class="navbar-toggler" type="button" data-togglr="collapse"
+                data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+            <div id="hoverdiv"></div>
+            {% if isLiked %}
+                 <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'search' %}">
+                <input class="panel input hover" hovertext="Enter a Book Name" name = "q" value="{{ request.GET.q }}" type="text" placeholder="Search.." style = "width:500px">
+
+                <button type="submit" hovertext="Search" class="btn btn-default hover"><img src="../../../static/images/search.png"></button>
+            </form>
+{#                <input class="panel input hover" hovertext="Enter a Book Name" type="text" placeholder="Search.." style = "width:500px;"><font color="white">ii</font>#}
+{#                <a class="hover" href="#" hovertext="Search"><img src="../../../static/images/search.png">#}
+            {% else %}
+{#                <input class="panel input hover" hovertext="Enter a Book Name" type="text" placeholder="Search.." style = "width:500px;"><font color="white">ii</font>#}
+{#                <a class="hover" href="#" hovertext="Search"><img src="../static/images/search.png"></a>#}
+                <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'search' %}">
+                <input class="panel input hover" hovertext="Enter a Book Name" name = "q" value="{{ request.GET.q }}" type="text" placeholder="Search.." style = "width:500px">
+
+                <button type="submit" hovertext="Search" class="btn btn-default hover"><img src="../static/images/search.png"></button>
+            </form>
+            {% endif %}
+
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+
+                    <div id="hoverdiv"></div>
+                    {% if isLiked %}
+                        <a class="nav-link hover" href="{% url 'home' %}" hovertext="Home"><img src="../../../static/images/home.png"></a>
+                    {% else %}
+                        <a class="nav-link hover" href="{% url 'home' %}" hovertext="Home"><img src="../static/images/home.png"></a>
+                    {% endif %}
+
+
+                </li>
+                <li class="nav-item">
+
+                    <div id="hoverdiv"></div>
+                    <a class="nav-link hover" href="{% url 'favourites' %}" hovertext="My Favorites"><font color="white">Ai</font>
+                        {% if isLiked %}
+                            <img src="../../../static/images/fav.png"></a>
+                        {% else %}
+                            <img src="../static/images/fav.png"></a>
+                        {% endif %}
+
+            </li>
+            <li class="nav-item">
+
+                <div id="hoverdiv"></div>
+                {% if isLiked %}
+                    <a class="nav-link hover" href="#popup1" hovertext="Upload a Book"><font color="white">Ai</font><img src="../../../static/images/upload.png">
+                {% else %}
+                    <a class="nav-link hover" href="#popup1" hovertext="Upload a Book"><font color="white">Ai</font><img src="../static/images/upload.png">
+                {% endif %}
+                </a>
+            </li>
+            <li class="nav-item">
+
+                <div id="hoverdiv"></div>
+                {% if isLiked %}
+                    <a class="nav-link hover" href="{% url 'logout' %}" hovertext="Log Out"><font color="white">A</font><img src="../../../static/images/logout.png">
+                {% else %}
+                    <a class="nav-link hover" href="{% url 'logout' %}" hovertext="Log Out"><font color="white">A</font><img src="../static/images/logout.png">
+                {% endif %}
+                </a>
+            </li>
+            <li class="nav-item">
+                <div id="hoverdiv"></div>
+                {% if isLiked %}
+                    <a class="nav-link hover" href="#" hovertext="Contact"><font color="white">ii</font><img src="../../../static/images/call.png">
+                {% else %}
+                    <a class="nav-link hover" href="#" hovertext="Contact"><font color="white">ii</font><img src="../static/images/call.png">
+                {% endif %}
+                </a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="backg">
+    <div class="contain sidenav">
+
+
+        {% for book in selectedBook %}
+            <div class="flip-card" style="width:19rem" >
+                <div class="front" >
+                    <img src="{{ book.thumbnailImage.url }}" alt="card img" class="card-img-top">
+                </div>
+
+                <div class="back">
+                    <p><i>“In the case of good books, the point is not to see how many of them you can get through, but rather how many can get through to you...” <br>– Mortimer J. Adler</i></p>
+                    <br>
+                    <br>
+{##}
+{#                    <div>#}
+{#                        {% if isLiked %}#}
+{#                            <a href = "{% url 'addfavourite' book.id %}"><button  onclick="myFunction()" type="button" class="hover buttonback btn btn-outline-none" hovertext="Add to Favorites">#}
+{#                                {% if Liked %} <img src="../../../static/images/liked.png">{% else %}<img src="../../../static/images/unliked.png">{% endif %}</button></a>#}
+{#                        {% else %}#}
+{#                            <a href = "{% url 'addfavourite' book.id %}"><button  onclick="myFunction()" type="button" class="hover buttonback btn btn-outline-none" hovertext="Add to Favorites">#}
+{#                                {% if Liked %} <img src="../static/images/liked.png">{% else %}<img src="../static/images/unliked.png">{% endif %}</button></a>#}
+{#                        {% endif %}#}
+{#                        <div id="snackbar">Successfully added to your Favorites</div>#}
+{##}
+{##}
+{#                        <font color=#333>aaaa</font>#}
+{##}
+                        {#                            <button onclick="myFunctionn()" type="button" class="btn btn-outline-dark btn-lg hover" hovertext="Click to Download -Format Type: PDF (eBook)"><img src="../static/images/download.png"></button>#}
+                        {##}
+                        {#                            <div id="snackbarr">Successfully downloaded</div>#}
+{##}
+{#                    </div>#}
+
+
+                </div>
+            </div>
+            </div>
+
+
+            <div class="main">
+            <font class="title">{{ book.bookName }} - {{ book.secondName }} &nbsp&nbsp&nbsp&nbsp</font>
+
+
+                 <a href = "{% url 'addfavourite' book.id %}" class="button"><font color="red">LIKE&nbsp</font></a>
+            {% if Liked %}
+                <i><small><font color="#808080">Book Added To Favorites</font></small></i>
+                {% endif %}
+            <br>
+            <small>by {{ book.authorName }}</small>
+
+            <div class="book">
+                <div>
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
+                    <small>&nbsp&nbsp<font>68,757</font><font color="grey">&nbspRatings</font> </small>
+                </div>
+            </div>
+
+            <font color="grey">
+                {{ book.synopsis }}
+            </font>
+
+
+{#            <br><br>#}
+{#            <div><img src="../../static/images/fav.png">#}
+{#                <a href="#">Add&nbspbook&nbspto&nbspfavorites</a>#}
+{#            </div>#}
+
+{#            <div class="icon-bar">#}
+{#                <a href = "#" class="readno"><font color="white">Add To favourites</font></a>#}
+{#            </div>#}
+
+
+            <div class="icon-bar">
+                <a href = "{% url 'readBook' book.id %}" class="readnow"><font color="white">Read Now!</font></a>
+            </div>
+
+
+        <font class="sris">Book Details &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp Critic Reviews</font>
+
+        <div class="sri">
+            <font color="grey">
+                Genre - <font>{{ book.genre }}</font>
+                <br>
+                Language - English
+                <br>
+                Paperback - <font>{{ book.bookPages }}</font> pages
+                <br>
+                Published on - <font>{{ book.date }}</font>
+                <br>
+                Published by - bookstoreLtd
+            </font>
+        </div>
+
+
+{% endfor %}
+        <div class="tab">
+            <button class="tablinks" onmouseover="openCity(event, 'review1')"><font color="grey">Parul Sehgal</font></button>
+            <button class="tablinks" onmouseover="openCity(event, 'review2')"><font color="grey">Michael Schaub</font></button>
+            <button class="tablinks" onmouseover="openCity(event, 'review3')"><font color="grey">Charles Finch</font></button>
+        </div>
+
+        <div id="review1" class="tabcontent">
+            <font color="grey">Utterly fascinating, a brilliant history and a human story as well. Evocative of period, vast of storytelling sweep and expert in execution.
+
+ Loved it.</font>
+        </div>
+
+        <div id="review2" class="tabcontent">
+            <font color="grey">I realise this might be of minority interest if, unlike me, you haven’t spent your whole adult life with epilepsy being front and centre, but bear with me.</font>
+        </div>
+
+        <div id="review3" class="tabcontent">
+            <font color="grey">Just one of the best things I read last year. I probably don’t need to tell you that given the success this book has had.</font>
+        </div>
+
+        <div class="clearfix"></div>
+
+
+        </div>
+
+</div>
+<br>
+
+
+
+<div>
+    <footer class="foot">
+        <a name="footer"><font color="black">
+            <p class="text-right">&copy Copyright. All rights reserved.&nbsp&nbsp&nbsp</p></font>
+        </a>
+    </footer>
+</div>
+<input type="hidden" id="myVar" name="variable" value="{{ ratings }}">
+
+
+
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <h5>  Share your content with us.</h5>
+
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+
+            <form>
+
+                <input type="text" name="bookname" style="width:320px" placeholder="Book Title">
+                <br>
+                <input type="text" name="author" style="width:228px" placeholder="Author">
+                <br>
+                <small>Book Genre  -&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp&nbsp  &nbsp &nbsp Release Date -</small>
+                <br>
+                <select style="width: 105px">
+
+                    <option value="genre1">Romance</option>
+                    <option value="genre2">Thriller</option>
+                    <option value="genre3">Fiction</option>
+                    <option value="genre5">Horror</option>
+                    <option value="genre6">Mystery</option>
+                    <option value="genre7">Spiritual</option>
+                    <option value="genre8">Psychology</option>
+
+                </select>
+                &nbsp &nbsp
+                <input type="date" style="width: 190px">
+
+
+                <br>
+                <small>Insert Book Cover image: </small><input type="file" style="width: 320px" name="pic">
+                <br>
+                <small>Select Book PDF: </small><input type="file" style="width: 320px" name="pic">
+
+                <br>
+                <textarea style="width: 320px" class="textarea" placeholder="Brief Synopsis" ></textarea>
+                <br>
+                <input type="submit" value="Upload Now" style="width: 320px" >
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% if isLiked %}
+    <script type="text/javascript" src="../../../static/Books/hovertext.js"></script>
+    <script type="text/javascript" src="../../../static/Books/vertical.js"></script>
+    <script type="text/javascript" src="../../../static/Books/snackbar.js"></script>
+{% else %}
+    <script type="text/javascript" src="../static/Books/hovertext.js"></script>
+    <script type="text/javascript" src="../static/Books/vertical.js"></script>
+    <script type="text/javascript" src="../static/Books/snackbar.js"></script>
+{% endif %}
+<script type="text/javascript">
+    var myVar = document.getElementById("myVar").value;
+
+    console.log(myVar);
+</script>
+{% if isLiked %}
+    <script type="text/javascript" src="../../../static/Books/star.js"></script>
+{% else %}
+    <script type="text/javascript" src="../static/Books/star.js"></script>
+{% endif %}
+</body>
+</html>
