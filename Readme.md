@@ -2,7 +2,7 @@
 
 ### About
 
-Ebook Store is an application where users can spend time reading quality books. It offers a variety of books which are divided into different genres. Readers can provide ratings and their opinions after reading a book. A recommendation system has also been used which recommends new books to the reader based on his earlier reads and how much he liked the the novel.
+Ebook Store is an application where readers can spend time reading quality books. It offers a variety of books which are divided into different genres. Readers can provide ratings and their opinions after reading a book. A recommendation system has also been used which recommends new books to the reader based on his earlier reads and how much he liked the the novel.
 
 ## Flow and Feature
 
